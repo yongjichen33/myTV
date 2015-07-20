@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
   		cd /vagrant/
   		npm install
   		bower install  
-      mkdir logs
+      mkdir -p logs
       chmod +x run-app         
     SCRIPT
 

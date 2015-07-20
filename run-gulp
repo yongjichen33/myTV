@@ -1,0 +1,5 @@
+
+if [ `ps aux|grep gulp |grep -v grep| wc -l` = 0 ]; then
+ 	  printf "Starting gulp \n"
+	gulp 2>&1 >> /vagrant/logs/gulp.log &
+fi
