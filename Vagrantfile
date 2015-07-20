@@ -16,24 +16,13 @@ Vagrant.configure(2) do |config|
 	config.vm.network :forwarded_port, guest: 8000, host: 8000, auto_correct: true
   	config.vm.network :private_network, ip: "124.25.162.14"
 
-  	#Scripts to start GULP and Node server
+  	#Scripts to install dependencies
   	$script = <<-SCRIPT
   		cd /vagrant/
-
   		npm install
-  		bower install
-
-  		if [ `ps aux|grep gulp |grep -v grep| wc -l` = 0 ]; then
-  		 	printf "Starting gulp \n"
-           	gulp 2>&1 >> /vagrant/myTV/logs/gulp.log &
-        fi
-
-        if [ `ps aux|grep node |grep -v grep| wc -l` = 0 ]; then
-        	printf "Starting node server \n"
-           	node server 2>&1 >> /vagrant/myTV/logs/node-server.log &
-        fi
-          
-
+  		bower install  
+      mkdir logs
+      chmod +x run-app         
     SCRIPT
 
   	#Start Provision
